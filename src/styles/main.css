@@ -23,7 +23,7 @@ body {
 }
 
 button {
-  display: inline-block;
+  /* display: inline-block;
   width: fit-content;
   min-width: 45px;
   color: var(--accent-color);
@@ -34,9 +34,8 @@ button {
   font-weight: bold;
   text-align: center;
   font-size: 16px;
-  cursor: pointer;
+  cursor: pointer; */
 }
-
 
 .hero {
   min-height: 600px;
@@ -110,34 +109,78 @@ button {
   padding: 10px;
 }
 
+.warning {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: rgb(235, 57, 66);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 4px;
+}
 .signupDiv {
-  margin: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+.signUpTopDiv {
+  width: 100%;
   display: flex;
   justify-content: center;
-  width: 100%;
-  max-width: 90%;
-  box-sizing: border-box;
-  flex-direction: row;
+  align-content: center;
+  flex-wrap: wrap;
   gap: 12px;
 }
-
-.signupDiv input[type="text"] {
-  width: 80%;
-  max-width: 600px;
+.userIdentificationInput {
   background-color: rgba(38, 38, 38, 0.798);
   border-radius: 4px;
-  padding: 20px 16px;
+  padding: 24px 16px 8px;
   color: var(--accent-color);
   border: 1px var(--accent-color) solid;
   font-size: 16px;
   max-height: 65px;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0px;
+  max-width: 100%;
+  min-width: 244px;
 }
-
-.signupDiv button {
-  width: 20%;
-  max-width: 200px;
+#emailOrPhoneInput {
+  width: 100%;
+  border: 0px;
+  outline: none;
+  background-color: rgba(38, 38, 38, 0);
+  color: var(--accent-color);
+  font-size: 16px;
 }
-
+#country-select {
+  max-width: 30%;
+  color: var(--accent-color);
+  border: 0px;
+  font-size: 16px;
+  background-color: rgba(38, 38, 38, 0);
+  outline: none;
+}
+.getStartedButton {
+  color: var(--accent-color);
+  background-color: var(--primary-color);
+  padding: 16px;
+  outline: none;
+  border-radius: 4px;
+  border: 0px solid transparent;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0%;
+}
+.getStartedButton:hover {
+  background-color: rgb(193, 17, 25);
+}
 .section-first {
   width: 100%;
   display: inline;
@@ -369,7 +412,6 @@ footer li {
   }
   .signupDiv button {
     width: 150px;
-    margin: 12px;
   }
 }
 

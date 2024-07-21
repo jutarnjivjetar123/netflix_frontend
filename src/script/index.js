@@ -31,25 +31,6 @@ function redirectToRegistrationPage() {
     "/Users/mahirkeran/Developer/Apps/Netflix/netflix_frontend/src/index.html";
 }
 
-function restoreOptionText() {
-  for (
-    let i = 0;
-    i < document.querySelector("#country-select").options.length;
-    i++
-  ) {
-    document.querySelector("#country-select").options[i].text =
-      document.querySelector("#country-select").options[i].dataset.name +
-      " " +
-      document.querySelector("#country-select").options[i].dataset.code;
-  }
-}
-
-function setFlagAndCode(selectElement) {
-  selectElement.selectedOptions[0].innerText =
-    selectElement.options[selectElement.selectedIndex].dataset.flag +
-    " " +
-    selectElement.options[selectElement.selectedIndex].dataset.code;
-}
 async function togglePhoneNumberAndEmailInput() {
   console.log("Toggle phone number and email input");
   const inputDiv = document.querySelector(".userIdentificationInput");
@@ -67,18 +48,12 @@ async function togglePhoneNumberAndEmailInput() {
       select.style.color = "var(--accent-color)";
       select.style.width = "30%";
       inputElement.style.width = "70%";
-      inputElement.style.backgroundColor = "rgba(38, 38, 38, 0)";
+      inputElement.style.backgroundColor = "rgba(38, 38, 38, 0) !important";
       inputElement.style.color = "var(--accent-color)";
       inputElement.style.paddingLeft = "12px";
       inputDiv.insertBefore(select, inputElement);
 
       loadCountryDataInSelectPhoneCountryCode();
-      select.addEventListener("focus", () => {
-        restoreOptionText(select);
-      });
-      select.addEventListener("change", () => {
-        setFlagAndCode(select);
-      });
     }
   }
   if (!/^[^A-Za-z]+$/.test(inputElement.value)) {
@@ -97,5 +72,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   document.querySelector("#emailOrPhoneInput").addEventListener("input", () => {
     togglePhoneNumberAndEmailInput();
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector(".signInButton").addEventListener("click", () => {
+    document
+      .querySelector(".emailOrPhoneInput")
+      .addEventListener("input", () => {
+        validatePhoneNumberOrEmailUserInput();
+      });
   });
 });

@@ -44,3 +44,4 @@ function validatePhoneNumberOrEmailUserInput() {
 
 window.validatePhoneNumberOrEmailUserInput =
   validatePhoneNumberOrEmailUserInput;
+
