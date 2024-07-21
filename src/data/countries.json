@@ -24,14 +24,14 @@
     "name": "Antigua & Barbuda",
     "code": "AG",
     "flag": "🇦🇬",
-    "countryCode": "+1-268",
+    "countryCode": "+1",
     "region": "NA"
   },
   {
     "name": "Anguilla",
     "code": "AI",
     "flag": "🇦🇮",
-    "countryCode": "+1-264",
+    "countryCode": "+1",
     "region": "NA"
   },
   {
@@ -73,7 +73,7 @@
     "name": "American Samoa",
     "code": "AS",
     "flag": "🇦🇸",
-    "countryCode": "+1-684",
+    "countryCode": "+1",
     "region": "OC"
   },
   {
@@ -122,7 +122,7 @@
     "name": "Barbados",
     "code": "BB",
     "flag": "🇧🇧",
-    "countryCode": "+1-246",
+    "countryCode": "+1",
     "region": "NA"
   },
   {
@@ -185,7 +185,7 @@
     "name": "Bermuda",
     "code": "BM",
     "flag": "🇧🇲",
-    "countryCode": "+1-441",
+    "countryCode": "+1",
     "region": "NA"
   },
   {
@@ -220,7 +220,7 @@
     "name": "Bahamas",
     "code": "BS",
     "flag": "🇧🇸",
-    "countryCode": "+1-242",
+    "countryCode": "+1",
     "region": "NA"
   },
   {
@@ -416,14 +416,14 @@
     "name": "Dominica",
     "code": "DM",
     "flag": "🇩🇲",
-    "countryCode": "+1-767",
+    "countryCode": "+1",
     "region": "NA"
   },
   {
     "name": "Dominican Republic",
     "code": "DO",
     "flag": "🇩🇴",
-    "countryCode": "+1-809 and 1-829",
+    "countryCode": "+1",
     "region": "NA"
   },
   {
@@ -542,7 +542,7 @@
     "name": "Grenada",
     "code": "GD",
     "flag": "🇬🇩",
-    "countryCode": "+1-473",
+    "countryCode": "+1",
     "region": "NA"
   },
   {
@@ -640,7 +640,7 @@
     "name": "Guam",
     "code": "GU",
     "flag": "🇬🇺",
-    "countryCode": "+1-671",
+    "countryCode": "+1",
     "region": "OC"
   },
   {
@@ -780,7 +780,7 @@
     "name": "Jamaica",
     "code": "JM",
     "flag": "🇯🇲",
-    "countryCode": "+1-876",
+    "countryCode": "+1",
     "region": "NA"
   },
   {
@@ -836,7 +836,7 @@
     "name": "St. Kitts & Nevis",
     "code": "KN",
     "flag": "🇰🇳",
-    "countryCode": "+1-869",
+    "countryCode": "+1",
     "region": "NA"
   },
   {
@@ -864,7 +864,7 @@
     "name": "Cayman Islands",
     "code": "KY",
     "flag": "🇰🇾",
-    "countryCode": "+1-345",
+    "countryCode": "+1",
     "region": "NA"
   },
   {
@@ -892,7 +892,7 @@
     "name": "St. Lucia",
     "code": "LC",
     "flag": "🇱🇨",
-    "countryCode": "+1-758",
+    "countryCode": "+1",
     "region": "NA"
   },
   {
@@ -1039,7 +1039,7 @@
     "name": "Northern Mariana Islands",
     "code": "MP",
     "flag": "🇲🇵",
-    "countryCode": "+1-670",
+    "countryCode": "+1",
     "region": "OC"
   },
   {
@@ -1060,7 +1060,7 @@
     "name": "Montserrat",
     "code": "MS",
     "flag": "🇲🇸",
-    "countryCode": "+1-664",
+    "countryCode": "+1",
     "region": "NA"
   },
   {
@@ -1270,7 +1270,7 @@
     "name": "Puerto Rico",
     "code": "PR",
     "flag": "🇵🇷",
-    "countryCode": "+1-787 and 1-939",
+    "countryCode": "+1 and +1",
     "region": "NA"
   },
   {
@@ -1494,7 +1494,7 @@
     "name": "Turks & Caicos Islands",
     "code": "TC",
     "flag": "🇹🇨",
-    "countryCode": "+1-649",
+    "countryCode": "+1",
     "region": "NA"
   },
   {
@@ -1578,7 +1578,7 @@
     "name": "Trinidad & Tobago",
     "code": "TT",
     "flag": "🇹🇹",
-    "countryCode": "+1-868",
+    "countryCode": "+1",
     "region": "NA"
   },
   {
@@ -1655,7 +1655,7 @@
     "name": "St. Vincent & Grenadines",
     "code": "VC",
     "flag": "🇻🇨",
-    "countryCode": "+1-784",
+    "countryCode": "+1",
     "region": "NA"
   },
   {
@@ -1669,14 +1669,14 @@
     "name": "British Virgin Islands",
     "code": "VG",
     "flag": "🇻🇬",
-    "countryCode": "+1-284",
+    "countryCode": "+1",
     "region": "NA"
   },
   {
     "name": "U.S. Virgin Islands",
     "code": "VI",
     "flag": "🇻🇮",
-    "countryCode": "+1-340",
+    "countryCode": "+1",
     "region": "NA"
   },
   {

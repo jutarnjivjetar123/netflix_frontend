@@ -44,10 +44,3 @@ function validatePhoneNumberOrEmailUserInput() {
 
 window.validatePhoneNumberOrEmailUserInput =
   validatePhoneNumberOrEmailUserInput;
-
-
-function activateInputValidation() { 
-  if (validator.isNumeric()) { 
-    
-  }
-}

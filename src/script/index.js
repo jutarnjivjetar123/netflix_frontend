@@ -28,6 +28,74 @@ function redirectToLoginPage() {
 
 function redirectToRegistrationPage() {
   window.location.pathname =
-    "/Users/mahirkeran/Developer/Apps/Netflix/netflix_frontend/src/data/json";
+    "/Users/mahirkeran/Developer/Apps/Netflix/netflix_frontend/src/index.html";
 }
 
+function restoreOptionText() {
+  for (
+    let i = 0;
+    i < document.querySelector("#country-select").options.length;
+    i++
+  ) {
+    document.querySelector("#country-select").options[i].text =
+      document.querySelector("#country-select").options[i].dataset.name +
+      " " +
+      document.querySelector("#country-select").options[i].dataset.code;
+  }
+}
+
+function setFlagAndCode(selectElement) {
+  selectElement.selectedOptions[0].innerText =
+    selectElement.options[selectElement.selectedIndex].dataset.flag +
+    " " +
+    selectElement.options[selectElement.selectedIndex].dataset.code;
+}
+async function togglePhoneNumberAndEmailInput() {
+  console.log("Toggle phone number and email input");
+  const inputDiv = document.querySelector(".userIdentificationInput");
+  const countryData = (inputElement =
+    document.querySelector("#emailOrPhoneInput"));
+  if (/^[^A-Za-z]+$/.test(inputElement.value)) {
+    console.log("TRUE");
+    if (inputDiv.querySelector("#country-select") === null) {
+      console.log("Input element style was changed");
+      const select = document.createElement("select");
+      select.name = "countryCodeSelect";
+      select.id = "country-select";
+      select.style.width = "30%";
+      select.style.backgroundColor = "rgba(38, 38, 38, 0)";
+      select.style.color = "var(--accent-color)";
+      select.style.width = "30%";
+      inputElement.style.width = "70%";
+      inputElement.style.backgroundColor = "rgba(38, 38, 38, 0)";
+      inputElement.style.color = "var(--accent-color)";
+      inputElement.style.paddingLeft = "12px";
+      inputDiv.insertBefore(select, inputElement);
+
+      loadCountryDataInSelectPhoneCountryCode();
+      select.addEventListener("focus", () => {
+        restoreOptionText(select);
+      });
+      select.addEventListener("change", () => {
+        setFlagAndCode(select);
+      });
+    }
+  }
+  if (!/^[^A-Za-z]+$/.test(inputElement.value)) {
+    if (inputDiv.querySelector("#country-select") !== null) {
+      inputDiv.removeChild(inputDiv.querySelector("#country-select"));
+      inputElement.style.width = "100%";
+      inputElement.style.backgroundColor = "rgba(38, 38, 38, 0)";
+      inputElement.style.color = "var(--accent-color)";
+      inputElement.style.paddingLeft = "0px";
+    }
+  }
+}
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector("#emailOrPhoneInput").addEventListener("focus", () => {
+    togglePhoneNumberAndEmailInput();
+  });
+  document.querySelector("#emailOrPhoneInput").addEventListener("input", () => {
+    togglePhoneNumberAndEmailInput();
+  });
+});

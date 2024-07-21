@@ -94,11 +94,11 @@ body {
   text-align: left !important;
 }
 
-input[type="text"] {
+#passwordInput {
   width: 280px;
   background-color: rgba(38, 38, 38, 0.798);
   border-radius: 4px;
-  padding: 20px 16px;
+  padding: 26px 16px 8px;
   margin-top: 12px;
   color: var(--accent-color);
   border: 1px var(--accent-color) solid;
@@ -107,6 +107,51 @@ input[type="text"] {
   overflow-x: hidden;
 }
 
+.userIdentificationInput {
+  background-color: rgba(38, 38, 38, 0.798);
+  border-radius: 4px;
+  padding: 24px 16px 8px;
+  margin-top: 12px;
+  color: var(--accent-color);
+  border: 1px var(--accent-color) solid;
+  font-size: 16px;
+  max-height: 65px;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0px;
+  max-width: 100%;
+}
+
+#emailOrPhoneInput {
+  width: 100%;
+  border: 0px;
+  outline: none;
+  background-color: rgba(38, 38, 38, 0);
+  color: var(--accent-color);
+  font-size: 16px;
+}
+#country-select {
+  max-width: 30%;
+  color: var(--accent-color);
+  border: 0px;
+  font-size: 16px;
+  background-color: rgba(38, 38, 38, 0);
+}
+#phoneNumberInputElementId {
+  width: 70%;
+  padding-left: 8px;
+  color: var(--accent-color);
+  border: 0px;
+  font-size: 16px;
+  background-color: rgba(38, 38, 38, 0);
+}
+
+#country-select,
+#phoneNumberInputElementId:focus {
+  outline: none;
+}
 button {
   width: 100%;
   border-style: solid;

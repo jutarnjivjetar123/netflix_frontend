@@ -27,17 +27,20 @@
       </div>
       <div class="signinDIV">
         <p class="title">Sign in</p>
-        <input
-          id="emailInput"
-          type="text"
-          placeholder="Email or phone number"
-        />
+        <div class="userIdentificationInput">
+          <input
+            id="emailOrPhoneInput"
+            type="text"
+            placeholder="Email or phone number"
+          />
+        </div>
+
         <div class="warning">
           <span class="material-symbols-outlined" style="font-size: 16px">
           </span>
           <label class="warning" for=""></label>
         </div>
-        <input id="passwordInput" type="text" placeholder="Password" />
+        <input id="passwordInput" type="password" placeholder="Password" />
         <button
           class="signInButton"
           onclick="validatePhoneNumberOrEmailUserInput()"
@@ -45,9 +48,7 @@
           Sign in
         </button>
         <p class="orP">OR</p>
-        <button class="codeSignInButton" onclick="fetchCountryData()">
-          Use a Sign-In code
-        </button>
+        <button class="codeSignInButton" onclick="">Use a Sign-In code</button>
         <p class="forgotPasswordLink">Forgot password?</p>
         <div class="rememberMeArea">
           <input
