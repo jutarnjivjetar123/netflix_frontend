@@ -75,12 +75,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+function adjustWarningMessagePaddingRelativeToUserInput() {
+  console.log(document.querySelector(".userIdentificationInput").offsetLeft);
+  
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector(".signInButton").addEventListener("click", () => {
-    document
-      .querySelector(".emailOrPhoneInput")
-      .addEventListener("input", () => {
-        validatePhoneNumberOrEmailUserInput();
-      });
+  window.addEventListener("resize", () => {
+    adjustWarningMessagePaddingRelativeToUserInput();
   });
 });

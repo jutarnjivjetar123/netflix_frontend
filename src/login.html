@@ -35,15 +35,16 @@
           />
         </div>
 
-        <div class="warning">
-          <span class="material-symbols-outlined" style="font-size: 16px">
-          </span>
-          <label class="warning" for=""></label>
-        </div>
+        <div class="warning"></div>
         <input id="passwordInput" type="password" placeholder="Password" />
         <button class="signInButton">Sign in</button>
         <p class="orP">OR</p>
-        <button class="codeSignInButton" onclick="">Use a Sign-In code</button>
+        <button
+          class="codeSignInButton"
+          onclick="validatePhoneNumberOrEmailUserInput()"
+        >
+          Use a Sign-In code
+        </button>
         <p class="forgotPasswordLink">Forgot password?</p>
         <div class="rememberMeArea">
           <input

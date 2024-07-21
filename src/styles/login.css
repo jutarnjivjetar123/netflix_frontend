@@ -132,6 +132,15 @@ body {
   color: var(--accent-color);
   font-size: 16px;
 }
+
+#emailOrPhoneInput:-internal-autofill-selected {
+  width: 100%;
+  border: 0px;
+  outline: none;
+  background-color: rgba(38, 38, 38, 0);
+  color: var(--accent-color);
+  font-size: 16px;
+}
 #country-select {
   max-width: 30%;
   color: var(--accent-color);
