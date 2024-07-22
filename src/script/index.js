@@ -77,11 +77,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function adjustWarningMessagePaddingRelativeToUserInput() {
   console.log(document.querySelector(".userIdentificationInput").offsetLeft);
-  
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", () => {
-    adjustWarningMessagePaddingRelativeToUserInput();
+    if (document.querySelector(".getStartedButton") !== null) {
+      document.querySelector(".warning").style.paddingLeft =
+        document.querySelector(".userIdentificationInput").offsetLeft -
+        20 +
+        "px";
+    }
   });
 });

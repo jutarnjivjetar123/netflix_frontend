@@ -178,6 +178,9 @@ button {
   cursor: pointer;
   margin: 0%;
 }
+.warning {
+  padding-top: 12px;
+}
 .getStartedButton:hover {
   background-color: rgb(193, 17, 25);
 }

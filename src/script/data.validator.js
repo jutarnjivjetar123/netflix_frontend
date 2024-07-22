@@ -17,6 +17,10 @@ function validatePhoneNumberOrEmailUserInput() {
   span.style.fontSize = "16px";
   warningElement.appendChild(span);
   warningElement.appendChild(label);
+  if (document.querySelector(".getStartedButton") !== null) {
+    warningElement.style.paddingLeft =
+      document.querySelector(".userIdentificationInput").offsetLeft - 20 + "px";
+  }
   if (emailValue.trim().length < 1) {
     console.log("Email or phone number is required");
     span.textContent = "info";
