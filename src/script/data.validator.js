@@ -1,7 +1,9 @@
 import validator from "validator";
 import { PhoneNumberUtil } from "google-libphonenumber";
+import { login } from "./user.data";
 const phoneUtil = PhoneNumberUtil.getInstance();
-function validatePhoneNumberOrEmailUserInput() {
+
+async function validatePhoneNumberOrEmailUserInput() {
   const warningElement = document.querySelector(".warning");
   if (warningElement.childElementCount > 0) {
     while (warningElement.firstChild) {
@@ -25,7 +27,7 @@ function validatePhoneNumberOrEmailUserInput() {
     console.log("Email or phone number is required");
     span.textContent = "info";
     label.textContent = "Email or phone number is required";
-    return;
+    return false;
   }
   if (validator.isNumeric(emailValue)) {
     try {
@@ -34,29 +36,30 @@ function validatePhoneNumberOrEmailUserInput() {
         span.textContent = "";
         label.textContent = "";
         console.log("Phone number is valid");
+        return true;
       } else {
         span.textContent = "info";
         label.textContent = "Phone number is invalid";
         console.log("Phone number is invalid");
+        return false;
       }
-      return;
     } catch (error) {
       span.textContent = "info";
       label.textContent = "Phone number is invalid";
       console.log("Phone number is invalid");
-      return;
+      return false;
     }
   }
   if (!validator.isEmail(emailValue)) {
     span.textContent = "info";
     label.textContent = "Email address is invalid";
     console.log("Email invalid");
-    return;
+    return false;
   }
   span.textContent = "";
   label.textContent = "";
   console.log("Email is valid");
-  return;
+  return true;
 }
 
 window.validatePhoneNumberOrEmailUserInput =
@@ -83,27 +86,36 @@ function validatePassword() {
     console.log("Password string is empty");
     span.textContent = "info";
     label.textContent = "Password is required";
-    return;
+    return false;
   }
   console.log("Password is OK");
   span.textContent = "";
   label.textContent = "";
+  return true;
 }
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector(".signInButton").addEventListener("click", () => {
-    validatePhoneNumberOrEmailUserInput();
-    validatePassword();
-    document
-      .querySelector("#emailOrPhoneInput")
-      .addEventListener("input", () => {
-        console.log("Validation active");
-        validatePhoneNumberOrEmailUserInput();
+  document
+    .querySelector(".signInButton")
+    .addEventListener("click", async () => {
+      var userValidationResult = false;
+      var passwordValidationResult = false;
+      userValidationResult = validatePhoneNumberOrEmailUserInput();
+      passwordValidationResult = validatePassword();
+      document
+        .querySelector("#emailOrPhoneInput")
+        .addEventListener("input", () => {
+          console.log("Validation active");
+          userValidationResult = validatePhoneNumberOrEmailUserInput();
+        });
+      document.querySelector("#passwordInput").addEventListener("input", () => {
+        console.log("Password validation active");
+        passwordValidationResult = validatePassword();
       });
-    document.querySelector("#passwordInput").addEventListener("input", () => {
-      console.log("Password validation active");
-      validatePassword();
+      if (userValidationResult && passwordValidationResult) {
+        console.log("User login process started");
+        await login();
+      }
     });
-  });
 });
 
 document.addEventListener("DOMContentLoaded", () => {

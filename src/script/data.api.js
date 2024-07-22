@@ -45,3 +45,9 @@ async function loadCountryDataInSelectPhoneCountryCode() {
 }
 
 function updateSelectedCountryCodeOption() {}
+
+
+async function checkServerStatus() { 
+  const response = await fetch("httlp://localhost:3000/checkStatus");
+  
+}

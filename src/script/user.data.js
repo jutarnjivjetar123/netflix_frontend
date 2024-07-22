@@ -1,4 +1,4 @@
-const apiUrl = "http://127.0.0.1:3001";
+const apiUrl = "http://127.0.0.1:3000";
 
 async function testConnectionToApi() {
   const url = "http://localhost:3000/checkStatus";
@@ -15,10 +15,10 @@ async function testConnectionToApi() {
   }
 }
 
-async function login() {
+export async function login() {
   const loginUrl = `${apiUrl}/user/login`;
   const data = {
-    email: document.querySelector("#emailInput").value,
+    email: document.querySelector("#emailOrPhoneInput").value,
     password: document.querySelector("#passwordInput").value,
   };
   console.log("Fetching POST to: " + loginUrl);
