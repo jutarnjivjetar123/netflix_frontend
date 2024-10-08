@@ -90,4 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-function someFunction() {}
+document.querySelector(".getStartedButton").addEventListener("click", () => {
+  console.log("Get started button was clicked");
+  console.log("Email: " + document.querySelector("#emailOrPhoneInput").value);
+});
+
+

@@ -16,7 +16,7 @@ async function testConnectionToApi() {
 }
 
 export async function login() {
-  const loginUrl = `${apiUrl}/user/login`;
+  const loginUrl = `${apiUrl}/user/login/signin`;
   const data = {
     email: document.querySelector("#emailOrPhoneInput").value,
     password: document.querySelector("#passwordInput").value,
@@ -36,12 +36,12 @@ export async function login() {
       const responseData = await response.json();
       console.log("Redirect link: " + JSON.stringify(responseData));
       console.log(response.headers.get("Authorization"));
-      console.log(responseData.data.redirectLink);
+      console.log(responseData.redirectLink);
       localStorage.setItem(
         "Authorization",
         response.headers.get("Authorization")
       );
-      window.location.href = responseData.data.redirectLink;
+      window.location.href = responseData.redirectLink;
     }
     if (response.status !== 200) {
       const responseData = await response.json();

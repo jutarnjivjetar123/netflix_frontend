@@ -118,14 +118,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+var isPhoneNumberOrEmailInputValidated = false;
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector(".getStartedButton").addEventListener("click", () => {
-    validatePhoneNumberOrEmailUserInput();
-    document
-      .querySelector("#emailOrPhoneInput")
-      .addEventListener("input", () => {
-        console.log("Validation active");
-        validatePhoneNumberOrEmailUserInput();
-      });
-  });
+  document
+    .querySelector(".getStartedButton")
+    .addEventListener("click", async () => {
+      isPhoneNumberOrEmailInputValidated =
+        await validatePhoneNumberOrEmailUserInput();
+
+      if (isPhoneNumberOrEmailInputValidated) {
+        localStorage.setItem(
+          "userIdentification",
+          document.querySelector("#emailOrPhoneInput").value
+        );
+        // Redirect to the given link when validation succeeds
+        window.location.href = "http://127.0.0.1:5501/src/signup/form.html";
+      }
+    });
 });
+
