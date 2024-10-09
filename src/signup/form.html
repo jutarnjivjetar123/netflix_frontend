@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/form.css" />
+
     <title>Document</title>
+    <script src="/dist/form.bundle.js"></script>
   </head>
   <body>
     <header>
@@ -24,11 +26,11 @@
         </svg>
       </div>
       <div class="goBackButton">
-        <button type="button">Go back</button>
+        <button class="goBackButtonElement" type="button">Go back</button>
       </div>
     </header>
     <div class="progressionTrack">
-      <p>
+      <p class="progressionTrackText">
         <span class="currentProgressStage">Create account</span> > Select Offer
         > Payment device > Confirm subscription > Verify email
       </p>
@@ -38,25 +40,32 @@
         <p>Step <b>1</b> of <b>5</b></p>
       </div>
       <div class="informationPanel">
-        <p>Welcome!</p>
-        <p>Joining FakeFlix is easy.</p>
+        <p class="welcomeText">Welcome!</p>
+        <p class="easyJoinText">Joining FakeFlix is easy.</p>
       </div>
       <div class="instructionText">
-        <p>Enter your password and you will be watching in no time</p>
+        <p class="enterPasswordText">
+          Enter your password and you will be watching in no time
+        </p>
       </div>
-      <div class="emailOrPhoneNumberShowcase">
-        <p class="registrationType">Email</p>
-        <p class="registrationValue">email.example@test.gmail</p>
+
+      <div class="emailOrPhoneInput">
+        <label for="">Email</label>
+        <input class="emailOrPhoneNumberInputForm" type="text" name="" id="" />
+        <div class="emailOrPhoneNumberInputWarning">
+          <p class="emailOrPhoneNumberInputWarningText">Warning text</p>
+        </div>
       </div>
       <div class="passwordInput">
         <label for="">Password</label>
         <input class="passwordInputForm" type="password" name="" id="" />
-        <div class="warningArea">
-          <p class="warningText">Warning text</p>
+        <div class="passwordInputWarning">
+          <p class="passwordInputWarningText">Warning text</p>
         </div>
       </div>
 
       <button class="nextSectionButton">Next</button>
+      <div class="registrationResponseResult"></div>
     </main>
   </body>
   <script src="../script/form.js"></script>
