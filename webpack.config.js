@@ -1,7 +1,9 @@
+const { watch } = require("fs");
 const path = require("path");
 
 module.exports = [
   {
+    watch: true,
     entry: "./src/script/data.validator.js",
     output: {
       filename: "bundle.js",
@@ -10,6 +12,7 @@ module.exports = [
     mode: "development",
   },
   {
+    watch: true,
     entry: "./src/script/form.js",
     output: {
       filename: "form.bundle.js",

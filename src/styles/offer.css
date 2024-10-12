@@ -1,0 +1,263 @@
+:root {
+  --primary-color: red;
+  --background-color: white;
+  --accent-color: rgb(201, 201, 201);
+  --step-count-color: rgb(98, 98, 98);
+}
+
+* {
+  font-family: Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu,
+    sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  width: 100%;
+}
+body {
+  background-color: var(--background-color);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+header {
+  width: 100%;
+  height: 10%;
+  margin: 0%;
+  padding: 0%;
+}
+
+header {
+  border-bottom: 1px var(--accent-color) solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerIcon {
+  margin-left: 2%;
+}
+
+.goBackButton {
+  color: #333;
+  margin-right: 2%;
+}
+
+.goBackButton button {
+  border: none;
+  background-color: transparent;
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.goBackButton button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.progressionTrack {
+  width: 100%;
+  margin: 2% 0%;
+}
+
+.progressionTrack p {
+  margin-left: 2%;
+  font-size: 20px;
+  text-wrap: wrap;
+}
+
+main {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.currentProgressStage {
+  color: var(--primary-color);
+  font-weight: 900;
+}
+
+.informationPanel {
+  width: 100%;
+  margin: 2% 0%;
+}
+
+.stepCount {
+}
+
+.selectOfferText {
+  font-size: 32px;
+}
+.offerPanel {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2%;
+}
+
+.offer {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  border: 1px solid var(--accent-color);
+  border-radius: 10px;
+  margin-bottom: 5%;
+  width: 50%;
+  cursor: pointer;
+}
+
+.offer:hover {
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(50, 50, 50, 0.114);
+}
+
+.selected {
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.selected:hover {
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.offerHeader {
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+
+  margin: 8px;
+  margin-top: 16px;
+  min-height: 83px;
+  padding: 10px 16px;
+  background: radial-gradient(
+      140.76% 131.96% at 100% 100%,
+      rgb(229, 9, 20) 0%,
+      rgba(74, 42, 150, 0.5) 73.57%,
+      rgba(74, 42, 150, 0) 100%
+    ),
+    rgb(29, 82, 157);
+  width: 90%;
+}
+
+.offerHeaderTitle {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.offerHeaderSubtitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: white;
+}
+.selectedOffer {
+  width: 100%;
+  text-align: right;
+  display: block;
+}
+.offerBody {
+  width: 100%;
+  margin: 16px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.offerItem {
+  padding: 12.5px 0px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+  width: 80%;
+}
+
+.lastOfferItem {
+  border: none;
+}
+
+.offerItemTitle {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.53846;
+  color: rgb(118, 118, 118);
+}
+
+.offerItemSubtitle {
+  font-size: 14px;
+  color: #000000b3;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.offer:focus {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 10px 0px;
+}
+
+.nextSectionButton {
+  width: 50%;
+
+  padding: 10px;
+  margin: 24px 0px;
+  font-size: 16px;
+  color: var(--background-color);
+  background-color: var(--primary-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-bottom: 5%;
+}
+
+.nextSectionButton:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 10px 0px;
+}
+
+.offerHeaderPanel {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.selectedOfferBody {
+  width: 100%;
+}
+@media screen and (max-width: 1050px) {
+  .offer {
+    width: 100%;
+  }
+  .offerPanel {
+    display: flex;
+    flex-direction: column;
+  }
+  .offerItem {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .offerHeader {
+    width: 30%;
+    padding: 12px;
+  }
+  .offerHeaderTitle {
+    font-size: 14px;
+  }
+  .offerHeaderSubtitle {
+    font-size: 10px;
+  }
+  .selectedOffer svg {
+    height: 12px;
+    width: 12px;
+  }
+
+}

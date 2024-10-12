@@ -4,41 +4,37 @@ let isPasswordValid = false;
 const apiUrl = "http://127.0.0.1:3000";
 
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("Completed stage: " + localStorage.getItem("completedStage"));
+  const completedStage = localStorage.getItem("completedStage");
+  if (completedStage !== null) {
+    if (completedStage === "2") {
+      window.location.href = "http://127.0.0.1:5501/src/signup/offer.html";
+    }
+  }
+  
+});
+document.addEventListener("DOMContentLoaded", async () => {
   console.log(localStorage.getItem("userIdentification"));
   document.querySelector(".emailOrPhoneNumberInputForm").value =
     localStorage.getItem("userIdentification");
-  document.querySelector(".emailOrPhoneNumberInputWarningText").innerText = "";
-  document.querySelector(".passwordInputWarningText").innerText = "";
-
   const emailInput = document.querySelector(".emailOrPhoneNumberInputForm");
   const passwordInput = document.querySelector(".passwordInputForm");
-
   const emailWarning = document.querySelector(
     ".emailOrPhoneNumberInputWarningText"
   );
   const passwordWarning = document.querySelector(".passwordInputWarningText");
+  emailWarning.innerText = "";
+  passwordWarning.innerText = "";
 
   const nextStageButton = document.querySelector(".nextSectionButton");
+
   emailInput.addEventListener("input", () => {
     emailWarning.innerText = "";
-    if (emailInput.value.trim().length < 1) {
-      emailWarning.innerText = "Email is required";
-    }
-    if (
-      emailInput.value.trim().length > 0 &&
-      !validator.isEmail(emailInput.value)
-    ) {
-      emailWarning.innerText = "Not valid email address";
-    }
   });
   passwordInput.addEventListener("input", () => {
-    console.log("Password input");
     passwordWarning.innerText = "";
-    if (passwordInput.value.trim().length < 1) {
-      passwordWarning.innerText = "Password is required";
-    }
   });
-  nextStageButton.addEventListener("click", () => {
+  nextStageButton.addEventListener("click", async () => {
     emailWarning.innerText = "";
     if (emailInput.value.trim().length < 1) {
       emailWarning.innerText = "Email is required";
@@ -52,9 +48,116 @@ document.addEventListener("DOMContentLoaded", () => {
     passwordWarning.innerText = "";
     if (passwordInput.value.trim().length < 1) {
       passwordWarning.innerText = "Password is required";
+    }
+    if (
+      passwordInput.value.trim().length > 0 &&
+      emailInput.value.trim().length > 0 &&
+      validator.isEmail(emailInput.value)
+    ) {
+      await registerUsingEmail();
     }
   });
 });
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const completedStage = localStorage.getItem("completedStage");
+//   console.log(completedStage);
+//   if (completedStage !== null) {
+//     if (completedStage === "1") {
+//       window.location.href = "http://127.0.0.1:5501/src/signup/form.html";
+//     }
+//     if (completedStage === "2") {
+//       console.log("TRYING TO REDIRECT");
+//       window.location.href = "http://127.0.0.1:5501/src/signup/offer.html";
+//     }
+//   }
+//   console.log(localStorage.getItem("userIdentification"));
+//   document.querySelector(".emailOrPhoneNumberInputForm").value =
+//     localStorage.getItem("userIdentification");
+//   document.querySelector(".emailOrPhoneNumberInputWarningText").innerText = "";
+//   document.querySelector(".passwordInputWarningText").innerText = "";
+
+//   const emailInput = document.querySelector(".emailOrPhoneNumberInputForm");
+//   const passwordInput = document.querySelector(".passwordInputForm");
+
+//   const emailWarning = document.querySelector(
+//     ".emailOrPhoneNumberInputWarningText"
+//   );
+//   const passwordWarning = document.querySelector(".passwordInputWarningText");
+
+//   const nextStageButton = document.querySelector(".nextSectionButton");
+//   emailInput.addEventListener("input", () => {
+//     emailWarning.innerText = "";
+//     if (emailInput.value.trim().length < 1) {
+//       emailWarning.innerText = "Email is required";
+//     }
+//     if (
+//       emailInput.value.trim().length > 0 &&
+//       !validator.isEmail(emailInput.value)
+//     ) {
+//       emailWarning.innerText = "Not valid email address";
+//     }
+//   });
+//   passwordInput.addEventListener("input", () => {
+//     console.log("Password input");
+//     passwordWarning.innerText = "";
+//     if (passwordInput.value.trim().length < 1) {
+//       passwordWarning.innerText = "Password is required";
+//     }
+//   });
+//   nextStageButton.addEventListener("click", () => {
+//     emailWarning.innerText = "";
+//     if (emailInput.value.trim().length < 1) {
+//       emailWarning.innerText = "Email is required";
+//     }
+//     if (
+//       emailInput.value.trim().length > 0 &&
+//       !validator.isEmail(emailInput.value)
+//     ) {
+//       emailWarning.innerText = "Not valid email address";
+//     }
+//     passwordWarning.innerText = "";
+//     if (passwordInput.value.trim().length < 1) {
+//       passwordWarning.innerText = "Password is required";
+//     }
+//   });
+// });
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const nextStageButton = document.querySelector(".nextSectionButton");
+
+//   const emailInput = document.querySelector(".emailOrPhoneNumberInputForm");
+//   const passwordInput = document.querySelector(".passwordInputForm");
+
+//   const emailWarning = document.querySelector(
+//     ".emailOrPhoneNumberInputWarningText"
+//   );
+//   const passwordWarning = document.querySelector(".passwordInputWarningText");
+//   nextStageButton.addEventListener("click", async () => {
+//     document.querySelector(".registrationResponseResult").innerHTML = "";
+//     emailWarning.innerText = "";
+//     if (emailInput.value.trim().length < 1) {
+//       emailWarning.innerText = "Email is required";
+//     }
+//     if (
+//       emailInput.value.trim().length > 0 &&
+//       !validator.isEmail(emailInput.value)
+//     ) {
+//       emailWarning.innerText = "Not valid email address";
+//     }
+//     passwordWarning.innerText = "";
+//     if (passwordInput.value.trim().length < 1) {
+//       passwordWarning.innerText = "Password is required";
+//     }
+//     if (
+//       passwordInput.value.trim().length > 0 &&
+//       emailInput.value.trim().length > 0 &&
+//       validator.isEmail(emailInput.value)
+//     ) {
+//       await registerUsingEmail();
+//     }
+//   });
+// });
 
 document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", () => {
@@ -117,46 +220,35 @@ async function registerUsingEmail() {
     console.log(response);
     const responseData = await response.json();
     if (response.status !== 200) {
-      document.querySelector(".registrationResponseResult").innerHTML =
-        "<p>" + responseData.message + "</p>";
+      document.querySelector(
+        ".registrationResponseResult"
+      ).innerHTML = `<p>We could not register you, because:</p>
+        <p>${responseData.message}</p>
+        `;
     }
     if (response.status === 200) {
       console.log("User Account was registered");
+      localStorage.setItem("loginCredentials", emailValue);
+      localStorage.setItem("publicId", responseData.publicId);
+      localStorage.setItem("completedStage", 1);
+      window.location.href = responseData.redirectLink;
     }
-  } catch (error) {}
+  } catch (error) {
+    document.querySelector(
+      ".registrationResponseResult"
+    ).innerHTML = `<p>We could not register you, because:</p>
+      <p>${error}</p>
+      `;
+  }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const nextStageButton = document.querySelector(".nextSectionButton");
-
-  const emailInput = document.querySelector(".emailOrPhoneNumberInputForm");
-  const passwordInput = document.querySelector(".passwordInputForm");
-
-  const emailWarning = document.querySelector(
-    ".emailOrPhoneNumberInputWarningText"
-  );
-  const passwordWarning = document.querySelector(".passwordInputWarningText");
-  nextStageButton.addEventListener("click", async () => {
-    emailWarning.innerText = "";
-    if (emailInput.value.trim().length < 1) {
-      emailWarning.innerText = "Email is required";
-    }
-    if (
-      emailInput.value.trim().length > 0 &&
-      !validator.isEmail(emailInput.value)
-    ) {
-      emailWarning.innerText = "Not valid email address";
-    }
-    passwordWarning.innerText = "";
-    if (passwordInput.value.trim().length < 1) {
-      passwordWarning.innerText = "Password is required";
-    }
-    if (
-      passwordInput.value.trim().length > 0 &&
-      emailInput.value.trim().length > 0 &&
-      validator.isEmail(emailInput.value)
-    ) {
-      await registerUsingEmail();
-    }
-  });
-});
+function redirectIfAnotherStageCompleted(completedStage) {
+  console.log("FUNCTION CALLED");
+  if (completedStage === 1) {
+    window.location.href = "http://127.0.0.1:5501/src/signup/form.html";
+  }
+  if (completedStage === 2) {
+    window.location.href = "http://127.0.0.1:5501/src/signup/offer.html";
+  }
+  return;
+}
