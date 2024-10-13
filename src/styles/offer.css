@@ -83,7 +83,6 @@ main {
 
 .informationPanel {
   width: 100%;
-  margin: 2% 0%;
 }
 
 .stepCount {
@@ -93,117 +92,114 @@ main {
   font-size: 32px;
 }
 .offerPanel {
-  width: 100%;
+  max-width: 1100px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   gap: 2%;
+  padding: 24px 38px;
 }
 
 .offer {
+  min-width: 30%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 18px;
+  margin: 12px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(128, 128, 128, 0.4);
+  transition: margin 250ms ease-in-out, box-shadow 250ms ease-in-out,
+    border-color 250ms ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+  cursor: pointer;
+}
+
+.offerHeader {
   display: flex;
   flex-direction: column;
   justify-items: center;
-  align-items: center;
-  border: 1px solid var(--accent-color);
-  border-radius: 10px;
-  margin-bottom: 5%;
-  width: 50%;
-  cursor: pointer;
-}
-
-.offer:hover {
-  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(50, 50, 50, 0.114);
-}
-
-.selected {
-  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
-}
-.selected:hover {
-  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
-}
-.offerHeader {
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  border: none;
   border-radius: 12px;
-  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px;
-  box-sizing: border-box;
-  color: white;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-
-  margin: 8px;
-  margin-top: 16px;
+  padding-top: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 0px;
+  margin: 8px 8px 0px;
+  color: var(--background-color);
+  overflow: none;
   min-height: 83px;
-  padding: 10px 16px;
-  background: radial-gradient(
-      140.76% 131.96% at 100% 100%,
-      rgb(229, 9, 20) 0%,
-      rgba(74, 42, 150, 0.5) 73.57%,
-      rgba(74, 42, 150, 0) 100%
-    ),
-    rgb(29, 82, 157);
-  width: 90%;
 }
 
 .offerHeaderTitle {
-  font-size: 1.125rem;
-  font-weight: 500;
-  line-height: 1.5;
+  font-size: 18px;
+  font-weight: 900;
 }
 .offerHeaderSubtitle {
-  font-size: 0.875rem;
+  font-size: 14px;
   font-weight: 500;
-  line-height: 1.5;
-  color: white;
+  margin-bottom: 8px;
 }
-.selectedOffer {
+.offerHeaderSpan {
   width: 100%;
   text-align: right;
-  display: block;
 }
+
 .offerBody {
-  width: 100%;
   margin: 16px 0px;
+  padding: 0px 25px;
+}
+.offerItem {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-.offerItem {
-  padding: 12.5px 0px;
   border-bottom: 1px solid rgba(128, 128, 128, 0.4);
-  width: 80%;
+  padding: 12.5px 0px;
 }
 
-.lastOfferItem {
-  border: none;
-}
-
-.offerItemTitle {
+.offerItemName {
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.53846;
   color: rgb(118, 118, 118);
 }
 
-.offerItemSubtitle {
-  font-size: 14px;
-  color: #000000b3;
+.offerItemValue {
+  font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.5;
+  color: rgba(0, 0, 0, 0.7);
 }
 
-.offer:focus {
+.firstItem {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.lastItem {
+  border: none;
+}
+.offer:hover {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 10px 0px;
 }
 
-.nextSectionButton {
-  width: 50%;
+.selected {
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 10px 0px;
+}
+.selected:hover {
+  box-shadow: rgba(0, 0, 0, 0.37) 0px 4px 10px 0px;
+}
 
-  padding: 10px;
+.nextSectionButton {
   margin: 24px 0px;
-  font-size: 16px;
+  display: inline-block;
+  width: fit-content;
+  width: 50%;
   color: var(--background-color);
   background-color: var(--primary-color);
   border: 1px solid var(--secondary-color);
@@ -213,51 +209,4 @@ main {
   text-align: center;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 12px;
-  cursor: pointer;
-  margin-bottom: 5%;
-}
-
-.nextSectionButton:hover {
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 10px 0px;
-}
-
-.offerHeaderPanel {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-.selectedOfferBody {
-  width: 100%;
-}
-@media screen and (max-width: 1050px) {
-  .offer {
-    width: 100%;
-  }
-  .offerPanel {
-    display: flex;
-    flex-direction: column;
-  }
-  .offerItem {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .offerHeader {
-    width: 30%;
-    padding: 12px;
-  }
-  .offerHeaderTitle {
-    font-size: 14px;
-  }
-  .offerHeaderSubtitle {
-    font-size: 10px;
-  }
-  .selectedOffer svg {
-    height: 12px;
-    width: 12px;
-  }
-
 }

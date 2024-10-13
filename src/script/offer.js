@@ -1,3 +1,6 @@
+const apiUrl = "http://127.0.0.1:3000";
+let storedOffers = [];
+let selectedOfferIndex = 0;
 document.addEventListener("DOMContentLoaded", () => {
   const completedStage = localStorage.getItem("completedStage");
   console.log(completedStage);
@@ -6,740 +9,218 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "http://127.0.0.1:5501/src/signup/form.html";
     }
   }
-  if (window.innerWidth < 1050) {
-    document.querySelector(".offerPanel").innerHTML = "";
-    document.querySelector(".offerPanel").innerHTML = `
-    <div class="offerHeaderPanel">
-    <div class = "offerHeader">
-        <p class = "offerHeaderTitle">    
-            Offer 2
-        </p>
-        <p class = "offerHeaderSubtitle">
-            4K + UHD
-        </p>
-        <span class = "selectedOffer">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
-        </span>
-    </div>
-    <div class = "offerHeader">
-        <p class = "offerHeaderTitle">    
-            Offer 2
-        </p>
-        <p class = "offerHeaderSubtitle">
-            4K + UHD
-        </p>
-        <span class = "selectedOffer">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
-        </span>
-    </div>
-    <div class = "offerHeader">
-        <p class = "offerHeaderTitle">    
-            Offer 2
-        </p>
-        <p class = "offerHeaderSubtitle">
-            4K + UHD
-        </p>
-        <span class = "selectedOffer">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
-        </span>
-    </div>
-</div>
-<div class="selectedOfferBody">
-    <div class="offerItem firstOfferItem">
-        <p class = "offerItemTitle">
-            Monthly price
-        </p>
-        <p class = "offerItemSubtitle">
-            20$
-        </p>
-    </div>
-    <div class="offerItem">
-        <p class = "offerItemTitle">
-            Video and sound quality
-        </p>
-        <p class = "offerItemSubtitle">
-            Best
-        </p>
-    </div>
-    <div class="offerItem">
-        <p class = "offerItemTitle">
-            Resolution
-        </p>
-        <p class = "offerItemSubtitle">
-            4K (Ultra HD) + UHD
-        </p>
-    </div>
-    <div class = "offerItem">
-        <p class = "offerItemTitle">
-            Spatial audio (immersive sound)
-        </p>
-        <p class = "offerItemSubtitle">
-            Included
-        </p>
-    </div>
-    <div class="offerItem">
-        <p class = "offerItemTitle">
-            Supported Devices
-        </p>
-        <p class = "offerItemSubtitle">
-            TV, computer, mobile phone, tablet
-        </p>
-            
-    </div>
-    <div class="offerItem">
-        <p class = "offerItemTitle">
-            Devices your household can watch at the same time
-        </p>
-        <p class = "offerItemSubtitle">
-            1
-        </p>
-    </div>
-    <div class="offerItem lastOfferItem">
-        <p class = "offerItemTitle">
-            Download devices
-        </p>
-        <p class = "offerItemSubtitle">
-            1
-        </p>
-    </div>
-</div>
-    `;
-  }
-  if (window.innerWidth > 1050) {
-    document.querySelector(".offerPanel").innerHTML = "";
-    document.querySelector(".offerPanel").innerHTML = `<div class="offer">
-          
-    <div class = "offerHeader">
-        <p class = "offerHeaderTitle">    
-            Offer 1
-        </p>
-        <p class = "offerHeaderSubtitle">
-            4K + UHD
-        </p>
-        <span class = "selectedOffer">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
-        </span>
-    </div>
-    <div class = "offerBody">
-        <div class="offerItem firstOfferItem">
-            <p class = "offerItemTitle">
-                Monthly price
-            </p>
-            <p class = "offerItemSubtitle">
-                20$
-            </p>
-        </div>
-        <div class="offerItem">
-            <p class = "offerItemTitle">
-                Video and sound quality
-            </p>
-            <p class = "offerItemSubtitle">
-                Best
-            </p>
-        </div>
-        <div class="offerItem">
-            <p class = "offerItemTitle">
-                Resolution
-            </p>
-            <p class = "offerItemSubtitle">
-                4K (Ultra HD) + UHD
-            </p>
-        </div>
-        <div class = "offerItem">
-            <p class = "offerItemTitle">
-                Spatial audio (immersive sound)
-            </p>
-            <p class = "offerItemSubtitle">
-                Included
-            </p>
-        </div>
-        <div class="offerItem">
-            <p class = "offerItemTitle">
-                Supported Devices
-            </p>
-            <p class = "offerItemSubtitle">
-                TV, computer, mobile phone, tablet
-            </p>
-                
-        </div>
-        <div class="offerItem">
-            <p class = "offerItemTitle">
-                Devices your household can watch at the same time
-            </p>
-            <p class = "offerItemSubtitle">
-                1
-            </p>
-        </div>
-        <div class="offerItem lastOfferItem">
-            <p class = "offerItemTitle">
-                Download devices
-            </p>
-            <p class = "offerItemSubtitle">
-                1
-            </p>
-        </div>
 
-    </div>
-   
-
-</div>
-<div class="offer">
-          
-          <div class = "offerHeader">
-              <p class = "offerHeaderTitle">    
-                  Offer 1
-              </p>
-              <p class = "offerHeaderSubtitle">
-                  4K + UHD
-              </p>
-              <span class = "selectedOffer">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
-              </span>
-          </div>
-          <div class = "offerBody">
-              <div class="offerItem firstOfferItem">
-                  <p class = "offerItemTitle">
-                      Monthly price
-                  </p>
-                  <p class = "offerItemSubtitle">
-                      20$
-                  </p>
-              </div>
-              <div class="offerItem">
-                  <p class = "offerItemTitle">
-                      Video and sound quality
-                  </p>
-                  <p class = "offerItemSubtitle">
-                      Best
-                  </p>
-              </div>
-              <div class="offerItem">
-                  <p class = "offerItemTitle">
-                      Resolution
-                  </p>
-                  <p class = "offerItemSubtitle">
-                      4K (Ultra HD) + UHD
-                  </p>
-              </div>
-              <div class = "offerItem">
-                  <p class = "offerItemTitle">
-                      Spatial audio (immersive sound)
-                  </p>
-                  <p class = "offerItemSubtitle">
-                      Included
-                  </p>
-              </div>
-              <div class="offerItem">
-                  <p class = "offerItemTitle">
-                      Supported Devices
-                  </p>
-                  <p class = "offerItemSubtitle">
-                      TV, computer, mobile phone, tablet
-                  </p>
-                      
-              </div>
-              <div class="offerItem">
-                  <p class = "offerItemTitle">
-                      Devices your household can watch at the same time
-                  </p>
-                  <p class = "offerItemSubtitle">
-                      1
-                  </p>
-              </div>
-              <div class="offerItem lastOfferItem">
-                  <p class = "offerItemTitle">
-                      Download devices
-                  </p>
-                  <p class = "offerItemSubtitle">
-                      1
-                  </p>
-              </div>
-
-          </div>
-         
-
-      </div>
-      <div class="offer">
-          
-          <div class = "offerHeader">
-              <p class = "offerHeaderTitle">    
-                  Offer 1
-              </p>
-              <p class = "offerHeaderSubtitle">
-                  4K + UHD
-              </p>
-              <span class = "selectedOffer">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
-              </span>
-          </div>
-          <div class = "offerBody">
-              <div class="offerItem firstOfferItem">
-                  <p class = "offerItemTitle">
-                      Monthly price
-                  </p>
-                  <p class = "offerItemSubtitle">
-                      20$
-                  </p>
-              </div>
-              <div class="offerItem">
-                  <p class = "offerItemTitle">
-                      Video and sound quality
-                  </p>
-                  <p class = "offerItemSubtitle">
-                      Best
-                  </p>
-              </div>
-              <div class="offerItem">
-                  <p class = "offerItemTitle">
-                      Resolution
-                  </p>
-                  <p class = "offerItemSubtitle">
-                      4K (Ultra HD) + UHD
-                  </p>
-              </div>
-              <div class = "offerItem">
-                  <p class = "offerItemTitle">
-                      Spatial audio (immersive sound)
-                  </p>
-                  <p class = "offerItemSubtitle">
-                      Included
-                  </p>
-              </div>
-              <div class="offerItem">
-                  <p class = "offerItemTitle">
-                      Supported Devices
-                  </p>
-                  <p class = "offerItemSubtitle">
-                      TV, computer, mobile phone, tablet
-                  </p>
-                      
-              </div>
-              <div class="offerItem">
-                  <p class = "offerItemTitle">
-                      Devices your household can watch at the same time
-                  </p>
-                  <p class = "offerItemSubtitle">
-                      1
-                  </p>
-              </div>
-              <div class="offerItem lastOfferItem">
-                  <p class = "offerItemTitle">
-                      Download devices
-                  </p>
-                  <p class = "offerItemSubtitle">
-                      1
-                  </p>
-              </div>
-
-          </div>
-         
-
-      </div>`;
-  }
   if (window.innerWidth > 840) {
     document.querySelector(".progressionTrackText").innerHTML =
-      '<span class="currentProgressStage">Create account</span> > Select Offer > Payment device > Confirm subscription > Verify email';
+      'Create account > <span class="currentProgressStage">Select Offer</span> > Payment device > Confirm subscription > Verify email';
     document.querySelector(".goBackButtonElement").innerHTML = "Go back";
   }
   if (window.innerWidth < 840) {
     document.querySelector(".progressionTrackText").innerHTML =
-      'Current stage: <span class="currentProgressStage">Create account</span>';
+      'Current stage: <span class="currentProgressStage">Select offer</span>';
     document.querySelector(".goBackButtonElement").innerHTML = "Go back";
+    document.querySelector(".selectOfferText").innerText =
+      "Choose the right plan for you";
   }
   if (window.innerWidth < 450) {
     document.querySelector(".progressionTrackText").innerHTML =
-      '<span class="currentProgressStage">Create account</span>';
+      '<span class="currentProgressStage">Select offer</span>';
     document.querySelector(".goBackButtonElement").innerHTML = "Go back";
+    document.querySelector(".selectOfferText").innerText =
+      "Pick from the plans below";
   }
   if (window.innerWidth < 310) {
     document.querySelector(".goBackButtonElement").innerHTML =
       '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M280-200v-80h284q63 0 109.5-40T720-420q0-60-46.5-100T564-560H312l104 104-56 56-200-200 200-200 56 56-104 104h252q97 0 166.5 63T800-420q0 94-69.5 157T564-200H280Z"/></svg>';
+    document.querySelector(".selectOfferText").innerText = "Select plan below";
   }
-});
-const offers = document.querySelectorAll(".offer");
-
-// Add a click event listener to each offer
-offers.forEach((offer) => {
-  offer.addEventListener("click", function () {
-    console.log("Clicked offer:", this); // 'this' refers to the clicked offer element
-    console.log(this.children[0].children[0].innerText);
-
-    document.querySelectorAll(".offer").forEach((item) => {
-      console.log(item.classList.contains("selected"));
-      if (item.classList.contains("selected")) {
-        item.classList.remove("selected");
-      }
-    });
-    this.classList.add("selected");
-  });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const goBackButton = document.querySelector(".goBackButton");
-  goBackButton.addEventListener("click", () => {
-    localStorage.setItem("completedStage", "1");
-    console.log(localStorage.getItem("completedStage"));
-    const completedStage = localStorage.getItem("completedStage");
-    if (completedStage !== null) {
-      if (completedStage === "1") {
-        window.location.href = "http://127.0.0.1:5501/src/signup/form.html";
-      }
-    }
-  });
 });
 
 document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", () => {
-    console.log("Page was resized");
-    console.log(window.innerWidth);
-    if (window.innerWidth < 1050) {
-      document.querySelector(".offerPanel").innerHTML = "";
-      document.querySelector(".offerPanel").innerHTML = `
-      <div class="offerHeaderPanel">
-      <div class = "offerHeader">
-          <p class = "offerHeaderTitle">    
-              Offer 2
-          </p>
-          <p class = "offerHeaderSubtitle">
-              4K + UHD
-          </p>
-          <span class = "selectedOffer">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
-          </span>
-      </div>
-      <div class = "offerHeader">
-          <p class = "offerHeaderTitle">    
-              Offer 2
-          </p>
-          <p class = "offerHeaderSubtitle">
-              4K + UHD
-          </p>
-          <span class = "selectedOffer">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
-          </span>
-      </div>
-      <div class = "offerHeader">
-          <p class = "offerHeaderTitle">    
-              Offer 2
-          </p>
-          <p class = "offerHeaderSubtitle">
-              4K + UHD
-          </p>
-          <span class = "selectedOffer">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
-          </span>
-      </div>
-  </div>
-  <div class="selectedOfferBody">
-      <div class="offerItem firstOfferItem">
-          <p class = "offerItemTitle">
-              Monthly price
-          </p>
-          <p class = "offerItemSubtitle">
-              20$
-          </p>
-      </div>
-      <div class="offerItem">
-          <p class = "offerItemTitle">
-              Video and sound quality
-          </p>
-          <p class = "offerItemSubtitle">
-              Best
-          </p>
-      </div>
-      <div class="offerItem">
-          <p class = "offerItemTitle">
-              Resolution
-          </p>
-          <p class = "offerItemSubtitle">
-              4K (Ultra HD) + UHD
-          </p>
-      </div>
-      <div class = "offerItem">
-          <p class = "offerItemTitle">
-              Spatial audio (immersive sound)
-          </p>
-          <p class = "offerItemSubtitle">
-              Included
-          </p>
-      </div>
-      <div class="offerItem">
-          <p class = "offerItemTitle">
-              Supported Devices
-          </p>
-          <p class = "offerItemSubtitle">
-              TV, computer, mobile phone, tablet
-          </p>
-              
-      </div>
-      <div class="offerItem">
-          <p class = "offerItemTitle">
-              Devices your household can watch at the same time
-          </p>
-          <p class = "offerItemSubtitle">
-              1
-          </p>
-      </div>
-      <div class="offerItem lastOfferItem">
-          <p class = "offerItemTitle">
-              Download devices
-          </p>
-          <p class = "offerItemSubtitle">
-              1
-          </p>
-      </div>
-  </div>
-      `;
-    }
-    if (window.innerWidth > 1050) {
-      document.querySelector(".offerPanel").innerHTML = "";
-      document.querySelector(".offerPanel").innerHTML = `<div class="offer">
-            
-      <div class = "offerHeader">
-          <p class = "offerHeaderTitle">    
-              Offer 1
-          </p>
-          <p class = "offerHeaderSubtitle">
-              4K + UHD
-          </p>
-          <span class = "selectedOffer">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
-          </span>
-      </div>
-      <div class = "offerBody">
-          <div class="offerItem firstOfferItem">
-              <p class = "offerItemTitle">
-                  Monthly price
-              </p>
-              <p class = "offerItemSubtitle">
-                  20$
-              </p>
-          </div>
-          <div class="offerItem">
-              <p class = "offerItemTitle">
-                  Video and sound quality
-              </p>
-              <p class = "offerItemSubtitle">
-                  Best
-              </p>
-          </div>
-          <div class="offerItem">
-              <p class = "offerItemTitle">
-                  Resolution
-              </p>
-              <p class = "offerItemSubtitle">
-                  4K (Ultra HD) + UHD
-              </p>
-          </div>
-          <div class = "offerItem">
-              <p class = "offerItemTitle">
-                  Spatial audio (immersive sound)
-              </p>
-              <p class = "offerItemSubtitle">
-                  Included
-              </p>
-          </div>
-          <div class="offerItem">
-              <p class = "offerItemTitle">
-                  Supported Devices
-              </p>
-              <p class = "offerItemSubtitle">
-                  TV, computer, mobile phone, tablet
-              </p>
-                  
-          </div>
-          <div class="offerItem">
-              <p class = "offerItemTitle">
-                  Devices your household can watch at the same time
-              </p>
-              <p class = "offerItemSubtitle">
-                  1
-              </p>
-          </div>
-          <div class="offerItem lastOfferItem">
-              <p class = "offerItemTitle">
-                  Download devices
-              </p>
-              <p class = "offerItemSubtitle">
-                  1
-              </p>
-          </div>
-
-      </div>
-     
-
-  </div>
-  <div class="offer">
-            
-            <div class = "offerHeader">
-                <p class = "offerHeaderTitle">    
-                    Offer 1
-                </p>
-                <p class = "offerHeaderSubtitle">
-                    4K + UHD
-                </p>
-                <span class = "selectedOffer">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
-                </span>
-            </div>
-            <div class = "offerBody">
-                <div class="offerItem firstOfferItem">
-                    <p class = "offerItemTitle">
-                        Monthly price
-                    </p>
-                    <p class = "offerItemSubtitle">
-                        20$
-                    </p>
-                </div>
-                <div class="offerItem">
-                    <p class = "offerItemTitle">
-                        Video and sound quality
-                    </p>
-                    <p class = "offerItemSubtitle">
-                        Best
-                    </p>
-                </div>
-                <div class="offerItem">
-                    <p class = "offerItemTitle">
-                        Resolution
-                    </p>
-                    <p class = "offerItemSubtitle">
-                        4K (Ultra HD) + UHD
-                    </p>
-                </div>
-                <div class = "offerItem">
-                    <p class = "offerItemTitle">
-                        Spatial audio (immersive sound)
-                    </p>
-                    <p class = "offerItemSubtitle">
-                        Included
-                    </p>
-                </div>
-                <div class="offerItem">
-                    <p class = "offerItemTitle">
-                        Supported Devices
-                    </p>
-                    <p class = "offerItemSubtitle">
-                        TV, computer, mobile phone, tablet
-                    </p>
-                        
-                </div>
-                <div class="offerItem">
-                    <p class = "offerItemTitle">
-                        Devices your household can watch at the same time
-                    </p>
-                    <p class = "offerItemSubtitle">
-                        1
-                    </p>
-                </div>
-                <div class="offerItem lastOfferItem">
-                    <p class = "offerItemTitle">
-                        Download devices
-                    </p>
-                    <p class = "offerItemSubtitle">
-                        1
-                    </p>
-                </div>
-
-            </div>
-           
-
-        </div>
-        <div class="offer">
-            
-            <div class = "offerHeader">
-                <p class = "offerHeaderTitle">    
-                    Offer 1
-                </p>
-                <p class = "offerHeaderSubtitle">
-                    4K + UHD
-                </p>
-                <span class = "selectedOffer">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
-                </span>
-            </div>
-            <div class = "offerBody">
-                <div class="offerItem firstOfferItem">
-                    <p class = "offerItemTitle">
-                        Monthly price
-                    </p>
-                    <p class = "offerItemSubtitle">
-                        20$
-                    </p>
-                </div>
-                <div class="offerItem">
-                    <p class = "offerItemTitle">
-                        Video and sound quality
-                    </p>
-                    <p class = "offerItemSubtitle">
-                        Best
-                    </p>
-                </div>
-                <div class="offerItem">
-                    <p class = "offerItemTitle">
-                        Resolution
-                    </p>
-                    <p class = "offerItemSubtitle">
-                        4K (Ultra HD) + UHD
-                    </p>
-                </div>
-                <div class = "offerItem">
-                    <p class = "offerItemTitle">
-                        Spatial audio (immersive sound)
-                    </p>
-                    <p class = "offerItemSubtitle">
-                        Included
-                    </p>
-                </div>
-                <div class="offerItem">
-                    <p class = "offerItemTitle">
-                        Supported Devices
-                    </p>
-                    <p class = "offerItemSubtitle">
-                        TV, computer, mobile phone, tablet
-                    </p>
-                        
-                </div>
-                <div class="offerItem">
-                    <p class = "offerItemTitle">
-                        Devices your household can watch at the same time
-                    </p>
-                    <p class = "offerItemSubtitle">
-                        1
-                    </p>
-                </div>
-                <div class="offerItem lastOfferItem">
-                    <p class = "offerItemTitle">
-                        Download devices
-                    </p>
-                    <p class = "offerItemSubtitle">
-                        1
-                    </p>
-                </div>
-
-            </div>
-           
-
-        </div>`;
-    }
     if (window.innerWidth > 840) {
       document.querySelector(".progressionTrackText").innerHTML =
-        '<span class="currentProgressStage">Create account</span> > Select Offer > Payment device > Confirm subscription > Verify email';
+        'Create account > <span class="currentProgressStage">Select Offer</span> > Payment device > Confirm subscription > Verify email';
       document.querySelector(".goBackButtonElement").innerHTML = "Go back";
     }
     if (window.innerWidth < 840) {
       document.querySelector(".progressionTrackText").innerHTML =
-        'Current stage: <span class="currentProgressStage">Create account</span>';
+        'Current stage: <span class="currentProgressStage">Select offer</span>';
       document.querySelector(".goBackButtonElement").innerHTML = "Go back";
+      document.querySelector(".selectOfferText").innerText =
+        "Choose the right plan for you";
     }
     if (window.innerWidth < 450) {
       document.querySelector(".progressionTrackText").innerHTML =
-        '<span class="currentProgressStage">Create account</span>';
+        '<span class="currentProgressStage">Select offer</span>';
       document.querySelector(".goBackButtonElement").innerHTML = "Go back";
+      document.querySelector(".selectOfferText").innerText =
+        "Pick from the plans below";
     }
     if (window.innerWidth < 310) {
       document.querySelector(".goBackButtonElement").innerHTML =
         '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M280-200v-80h284q63 0 109.5-40T720-420q0-60-46.5-100T564-560H312l104 104-56 56-200-200 200-200 56 56-104 104h252q97 0 166.5 63T800-420q0 94-69.5 157T564-200H280Z"/></svg>';
+      document.querySelector(".selectOfferText").innerText =
+        "Select plan below";
     }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const getAllOffersURL = `${apiUrl}/offer/offers`;
+  try {
+    const response = await fetch(getAllOffersURL);
+    console.log(response);
+    if (response.status === 404) {
+      throw new Error("No offers available right now, please try again later");
+    }
+    if (!response.ok) {
+      throw new Error("Could not load offers right now");
+    }
+    storedOffers = await response.json().then((data) => {
+      return data.offers;
+    });
+    console.log(storedOffers);
+  } catch (error) {
+    document.querySelector(
+      ".offerPanel"
+    ).innerHTML = `<p>${error.message}</p>;`;
+  }
+
+  //Display data retrieved from the server about given offer plans
+  if (storedOffers.length > 0) {
+    const offerPanel = document.querySelector(".offerPanel");
+    offerPanel.innerHTML = "";
+    storedOffers.forEach((offer, index) => {
+      //Create div which will contain all the relevant data for a single offer instance
+      const offerDiv = document.createElement("div");
+      offerDiv.classList.add("offer");
+
+      //Create a div which contains offer name and resolution it provides
+      const offerHeader = document.createElement("div");
+      offerHeader.classList.add("offerHeader");
+
+      const offerTitle = document.createElement("p");
+      offerTitle.classList.add("offerHeaderTitle");
+      offerTitle.innerText = offer.offerTitle;
+
+      const offerSubtitle = document.createElement("p");
+      offerSubtitle.classList.add("offerHeaderSubtitle");
+      offerSubtitle.innerText = offer.offerSubtitle;
+
+      const offerHeaderSpan = document.createElement("span");
+      offerHeaderSpan.classList.add("offerHeaderSpan");
+      offerHeader.innerHTML = "";
+      offerHeader.append(offerTitle, offerSubtitle, offerHeaderSpan);
+      console.log(offer.offerColor);
+      offerHeader.style.background = offer.offerColor;
+      offerDiv.appendChild(offerHeader);
+      const offerBody = document.createElement("div");
+      offerBody.classList.add("offerBody");
+      const items = [
+        {
+          item: "Monthly price",
+          value: offer.monthlyBillingAmount,
+        },
+        {
+          item: "Video and sound quality",
+          value: offer.resolutionQuality,
+        },
+        {
+          item: "Resolution",
+          value: offer.resolutionDescription,
+        },
+      ];
+      items.forEach((item, index) => {
+        const itemDiv = document.createElement("div");
+        const itemName = document.createElement("p");
+        const itemValue = document.createElement("p");
+
+        itemDiv.classList.add("offerItem");
+        itemName.classList.add("offerItemName");
+        itemValue.classList.add("offerItemValue");
+        if (index === 0) itemValue.classList.add("firstItem");
+
+        itemName.innerText = item.item;
+        itemValue.innerText = item.value;
+        itemDiv.append(itemName, itemValue);
+        offerBody.appendChild(itemDiv);
+      });
+
+      if (offer.isSpatialAudio) {
+        const spatialAudioItem = document.createElement("div");
+        const spatialAudioItemName = document.createElement("p");
+        const spatialAudioItemValue = document.createElement("p");
+
+        spatialAudioItem.classList.add("offerItem");
+        spatialAudioItemName.classList.add("offerItemName");
+        spatialAudioItemValue.classList.add("offerItemValue");
+
+        spatialAudioItemName.innerText = "Spatial audio (immersive sound)";
+        spatialAudioItemValue.innerText = "Included";
+        spatialAudioItem.append(spatialAudioItemName, spatialAudioItemValue);
+        offerBody.appendChild(spatialAudioItem);
+      }
+
+      const remainingItems = [
+        {
+          item: "Supported devices",
+          value: offer.supportedDevices,
+        },
+        {
+          item: "Devices your household can watch at the same time",
+          value: offer.maxNumberOfDevicesToWatch,
+        },
+        {
+          item: "Download devices",
+          value: offer.maxNumberOfDevicesToDownload,
+        },
+      ];
+      remainingItems.forEach((item, index) => {
+        const itemDiv = document.createElement("div");
+        const itemName = document.createElement("p");
+        const itemValue = document.createElement("p");
+
+        itemDiv.classList.add("offerItem");
+        itemName.classList.add("offerItemName");
+        itemValue.classList.add("offerItemValue");
+        if (index === remainingItems.length - 1)
+          itemDiv.classList.add("lastItem");
+
+        itemName.innerText = item.item;
+        itemValue.innerText = item.value;
+        itemDiv.append(itemName, itemValue);
+        offerBody.appendChild(itemDiv);
+      });
+      offerDiv.appendChild(offerBody);
+      offerPanel.appendChild(offerDiv);
+    });
+  }
+  const offers = document.querySelectorAll(".offer");
+  offers.forEach((offer) => {
+    offer.addEventListener("click", () => {
+      offers.forEach((item) => {
+        if (item.classList.contains("selected")) {
+          item.classList.remove("selected");
+          item.children[0].children[2].innerHTML = "";
+        }
+      });
+      offer.classList.add("selected");
+      offer.children[0].children[2].innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m429.28-445.37-53.34-52.34q-12.37-12.38-26.79-12.38-14.41 0-26.85 12.44-12.43 12.43-12.31 27.35.12 14.91 12.38 27.17l79.35 79.35q12.08 12.17 27.52 12.17 15.43 0 27.61-12.17L636.26-543.2q12.44-12.43 12.44-27.22 0-14.8-12.44-27.23-12.43-12.44-26.85-12.44-14.41 0-26.71 12.31L429.28-445.37ZM480-97.87q-78.82 0-148.41-29.88T209.8-209.93q-52.19-52.29-82.06-121.81Q97.87-401.26 97.87-480q0-79.82 29.88-148.91t82.18-121.29q52.29-52.19 121.81-82.06 69.52-29.87 148.26-29.87 79.82 0 148.91 29.88t121.29 82.18q52.19 52.29 82.06 121.31 29.87 69.02 29.87 148.76 0 78.82-29.88 148.41T750.07-209.8q-52.29 52.19-121.31 82.06Q559.74-97.87 480-97.87Z"/></svg>`;
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const offers = document.querySelectorAll(".offer");
+  offers.forEach((offer) => {
+    offer.addEventListener("click", () => {
+      offers.forEach((item) => {
+        if (item.classList.contains("selected")) {
+          item.classList.remove("selected");
+        }
+      });
+      offer.classList.add("selected");
+    });
   });
 });
