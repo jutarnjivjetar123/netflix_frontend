@@ -215,7 +215,7 @@ main {
   cursor: pointer;
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1179px) {
   .goBackButton {
     padding-right: 5%;
   }
@@ -285,5 +285,28 @@ main {
     justify-content: space-between;
     align-items: center;
     line-height: 0;
+  }
+}
+@media screen and (max-width: 500px) {
+  .offerPanel {
+    width: 85%;
+  }
+}
+@media screen and (max-width: 420px) {
+  .offerPanel {
+    width: 95%;
+  }
+  .offerHeaderPanel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .offerHeader {
+    width: 80%;
+  }
+  .offerItem {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
   }
 }
