@@ -72,6 +72,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         const offerHeader = document.createElement("div");
         offerHeader.classList.add("offerHeader");
         offerHeader.innerHTML = `${index}`;
+        if (index === storedOffers.length - 1) {
+          document
+            .querySelectorAll(".offer")
+            .forEach((offerNode, offerNodeIndex) => {
+              if (offerNode.classList.contains("selected")) {
+                offerNode.classList.remove("selected");
+              }
+            });
+          offerHeader.classList.add("selected");
+        }
         offerHeader.addEventListener("click", () => {
           console.log("Selected offer");
           console.log("Offer index: " + index);
@@ -83,7 +93,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             ".selectOfferText"
           ).innerText = `Selected offer index: ${selectedOfferIndex}`;
           document
-            .querySelectorAll(".offer")
+            .querySelectorAll(".offerHeader")
             .forEach((offerNode, offerNodeIndex) => {
               if (offerNode.classList.contains("selected")) {
                 offerNode.classList.remove("selected");
@@ -142,6 +152,12 @@ document.addEventListener("DOMContentLoaded", async () => {
           const offerHeader = document.createElement("div");
           offerHeader.classList.add("offerHeader");
           offerHeader.innerHTML = `${index}`;
+          if (
+            selectedOfferIndex === null &&
+            index === storedOffers.length - 1
+          ) {
+            offerHeader.classList.add("selected");
+          }
           if (selectedOfferIndex === index) {
             document
               .querySelectorAll(".offerHeader")
