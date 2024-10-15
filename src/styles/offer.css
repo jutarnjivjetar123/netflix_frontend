@@ -112,6 +112,19 @@ main {
 .selected {
   color: red;
 }
+
+.offerHeaderPanel {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.offerHeader {
+  border: 1px dotted black;
+  padding: 32px;
+  border-radius: 12px;
+}
 /* .offerPanel {
   max-width: 1100px;
   display: flex;

@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       ".selectOfferText"
     ).innerText = `Selected offer index: ${selectedOfferIndex}`;
     offerPanel.innerHTML = "";
-    if (window.innerWidth > 1050) {
+    if (window.innerWidth > 1049) {
       storedOffers.forEach((offer, index) => {
         const offerDiv = document.createElement("div");
         offerDiv.innerHTML = `<p>${index}</p>`;
@@ -64,6 +64,36 @@ document.addEventListener("DOMContentLoaded", async () => {
           offerDiv.classList.add("selected");
         });
       });
+    }
+    if (window.innerWidth < 1050) {
+      const offerHeaderPanel = document.createElement("div");
+      offerHeaderPanel.classList.add("offerHeaderPanel");
+      storedOffers.forEach((offer, index) => {
+        const offerHeader = document.createElement("div");
+        offerHeader.classList.add("offerHeader");
+        offerHeader.innerHTML = `${index}`;
+        offerHeader.addEventListener("click", () => {
+          console.log("Selected offer");
+          console.log("Offer index: " + index);
+          console.log("Offer element: ");
+          console.log(offer);
+          selectedOfferIndex = index;
+          isSelectedIndexSet = true;
+          document.querySelector(
+            ".selectOfferText"
+          ).innerText = `Selected offer index: ${selectedOfferIndex}`;
+          document
+            .querySelectorAll(".offer")
+            .forEach((offerNode, offerNodeIndex) => {
+              if (offerNode.classList.contains("selected")) {
+                offerNode.classList.remove("selected");
+              }
+            });
+          offerHeader.classList.add("selected");
+        });
+        offerHeaderPanel.appendChild(offerHeader);
+      });
+      offerPanel.append(offerHeaderPanel);
     }
 
     window.addEventListener("resize", () => {
@@ -104,6 +134,46 @@ document.addEventListener("DOMContentLoaded", async () => {
             offerDiv.classList.add("selected");
           });
         });
+      }
+      if (window.innerWidth < 1050) {
+        const offerHeaderPanel = document.createElement("div");
+        offerHeaderPanel.classList.add("offerHeaderPanel");
+        storedOffers.forEach((offer, index) => {
+          const offerHeader = document.createElement("div");
+          offerHeader.classList.add("offerHeader");
+          offerHeader.innerHTML = `${index}`;
+          if (selectedOfferIndex === index) {
+            document
+              .querySelectorAll(".offerHeader")
+              .forEach((offerNode, offerNodeIndex) => {
+                if (offerNode.classList.contains("selected")) {
+                  offerNode.classList.remove("selected");
+                }
+              });
+            offerHeader.classList.add("selected");
+          }
+          offerHeader.addEventListener("click", () => {
+            console.log("Selected offer");
+            console.log("Offer index: " + index);
+            console.log("Offer element: ");
+            console.log(offer);
+            selectedOfferIndex = index;
+            isSelectedIndexSet = true;
+            document.querySelector(
+              ".selectOfferText"
+            ).innerText = `Selected offer index: ${selectedOfferIndex}`;
+            document
+              .querySelectorAll(".offer")
+              .forEach((offerNode, offerNodeIndex) => {
+                if (offerNode.classList.contains("selected")) {
+                  offerNode.classList.remove("selected");
+                }
+              });
+            offerHeader.classList.add("selected");
+          });
+          offerHeaderPanel.appendChild(offerHeader);
+        });
+        offerPanel.append(offerHeaderPanel);
       }
     });
   }
