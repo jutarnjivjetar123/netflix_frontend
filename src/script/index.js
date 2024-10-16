@@ -1,3 +1,26 @@
+document.addEventListener("DOMContentLoaded", async () => {
+  const pingApiURL = "http://localhost:3000/check/status";
+  try {
+    const response = await fetch(pingApiURL);
+    if (!response.ok) {
+      throw new Error("Server is not available");
+    }
+  } catch (error) {
+    console.log("Server is currently not available");
+    document.querySelectorAll(".subtitle")[1].innerHTML = "";
+    document.querySelectorAll(".subtitle")[1].innerHTML =
+      "Our servers are currently down, please try again later";
+    document.querySelectorAll(".subtitle")[1].style.color = "red";
+    document.querySelectorAll(".subtitle")[1].style.backgroundColor = "white";
+    document.querySelectorAll(".subtitle")[1].style.width = "fit-content";
+    document.querySelectorAll(".subtitle")[1].style.padding = "12px";
+
+    document.querySelectorAll(".subtitle")[1].style.fontSize = "24px";
+    document.querySelector(".signUpTopDiv").innerHTML = "";
+    document.querySelector("button").remove();
+  }
+});
+
 function printSelectedObject(selectedObject) {
   console.log(selectedObject);
 
@@ -94,5 +117,3 @@ document.querySelector(".getStartedButton").addEventListener("click", () => {
   console.log("Get started button was clicked");
   console.log("Email: " + document.querySelector("#emailOrPhoneInput").value);
 });
-
-

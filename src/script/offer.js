@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (completedStage === "1") {
       window.location.href = "http://127.0.0.1:5501/src/signup/form.html";
     }
+    if (completedStage === "3") {
+      window.location.href = "http://127.0.0.1:5501/src/signup/card.html";
+    }
   }
   if (window.innerWidth > 840) {
     document.querySelector(".progressionTrackText").innerHTML =
@@ -37,6 +40,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const getAllOffersURL = `${apiUrl}/offer/offers`;
   try {
     const response = await fetch(getAllOffersURL);
+
     console.log(response);
     if (response.status === 404) {
       throw new Error("No offers available right now, please try again later");
@@ -49,9 +53,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
     console.log(storedOffers);
   } catch (error) {
-    document.querySelector(
-      ".offerPanel"
-    ).innerHTML = `<p>${error.message}</p>;`;
+    document.querySelector(".offerPanel").innerHTML = "";
+    if ((error.message = "Failed to fetch")) {
+      document.querySelector(
+        ".warningArea"
+      ).innerHTML = `<h2 style="text-align:center">An error occurred:</h2><br/><p>Our servers are currently down, please try again later</p>`;
+    } else {
+      document.querySelector(
+        ".warningArea"
+      ).innerHTML = `<p>An error occurred</p><br/><p>${error.message}</p>`;
+    }
   }
 
   const offerPanel = document.querySelector(".offerPanel");
@@ -187,10 +198,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             .forEach((offerNode, offerNodeIndex) => {
               if (offerNode.classList.contains("selected")) {
                 offerNode.classList.remove("selected");
-                offerNode.children[2].innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m429.28-445.37-53.34-52.34q-12.37-12.38-26.79-12.38-14.41 0-26.85 12.44-12.43 12.43-12.31 27.35.12 14.91 12.38 27.17l79.35 79.35q12.08 12.17 27.52 12.17 15.43 0 27.61-12.17L636.26-543.2q12.44-12.43 12.44-27.22 0-14.8-12.44-27.23-12.43-12.44-26.85-12.44-14.41 0-26.71 12.31L429.28-445.37ZM480-97.87q-78.82 0-148.41-29.88T209.8-209.93q-52.19-52.29-82.06-121.81Q97.87-401.26 97.87-480q0-79.82 29.88-148.91t82.18-121.29q52.29-52.19 121.81-82.06 69.52-29.87 148.26-29.87 79.82 0 148.91 29.88t121.29 82.18q52.19 52.29 82.06 121.31 29.87 69.02 29.87 148.76 0 78.82-29.88 148.41T750.07-209.8q-52.29 52.19-121.31 82.06Q559.74-97.87 480-97.87Z"/></svg>`;
+                offerNode.children[0].children[2].innerHTML = "";
               }
             });
           offerDiv.classList.add("selected");
+          offerDiv.children[0].children[2].innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m429.28-445.37-53.34-52.34q-12.37-12.38-26.79-12.38-14.41 0-26.85 12.44-12.43 12.43-12.31 27.35.12 14.91 12.38 27.17l79.35 79.35q12.08 12.17 27.52 12.17 15.43 0 27.61-12.17L636.26-543.2q12.44-12.43 12.44-27.22 0-14.8-12.44-27.23-12.43-12.44-26.85-12.44-14.41 0-26.71 12.31L429.28-445.37ZM480-97.87q-78.82 0-148.41-29.88T209.8-209.93q-52.19-52.29-82.06-121.81Q97.87-401.26 97.87-480q0-79.82 29.88-148.91t82.18-121.29q52.29-52.19 121.81-82.06 69.52-29.87 148.26-29.87 79.82 0 148.91 29.88t121.29 82.18q52.19 52.29 82.06 121.31 29.87 69.02 29.87 148.76 0 78.82-29.88 148.41T750.07-209.8q-52.29 52.19-121.31 82.06Q559.74-97.87 480-97.87Z"/></svg>`;
         });
       });
     }
@@ -960,4 +972,28 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     });
   }
+
+  document.querySelector(".nextSectionButton").addEventListener("click", () => {
+    if (selectedOfferIndex !== null && storedOffers.length > 0) {
+      console.log(
+        "Offer selected is with id: " + storedOffers[selectedOfferIndex].offerId
+      );
+      localStorage.setItem(
+        "selectedOfferId",
+        `${storedOffers[selectedOfferIndex].offerId}`
+      );
+      localStorage.setItem(
+        "offerValue",
+        `${storedOffers[selectedOfferIndex].monthlyBillingAmount}`
+      );
+      localStorage.setItem("completedStage", "3");
+      window.location.href = "http://localhost:5501/src/signup/card.html";
+    }
+    if (selectedOfferIndex === null && storedOffers.length > 0) {
+      document.querySelector(".warningArea").innerHTML = "";
+      document.querySelector(
+        ".warningArea"
+      ).innerHTML = `<p>Please select one of the offers</p>`;
+    }
+  });
 });

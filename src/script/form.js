@@ -10,8 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (completedStage === "2") {
       window.location.href = "http://127.0.0.1:5501/src/signup/offer.html";
     }
+    if (completedStage === "3") {
+      window.location.href = "http://127.0.0.1:5501/src/signup/card.html";
+    }
   }
-  
 });
 document.addEventListener("DOMContentLoaded", async () => {
   console.log(localStorage.getItem("userIdentification"));
