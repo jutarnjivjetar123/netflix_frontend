@@ -46,17 +46,7 @@ header {
   margin-right: 2%;
 }
 
-.goBackButton button {
-  border: none;
-  background-color: transparent;
-  font-size: 19px;
-  font-weight: 500;
-}
 
-.goBackButton button:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
 
 .progressionTrack {
   width: 100%;

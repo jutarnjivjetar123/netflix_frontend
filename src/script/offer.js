@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       window.location.href = "http://127.0.0.1:5501/src/signup/form.html";
     }
     if (completedStage === "3") {
-      window.location.href = "http://127.0.0.1:5501/src/signup/card.html";
+      window.location.href =
+        "http://127.0.0.1:5501/src/signup/paymentpicker.html";
     }
   }
   if (window.innerWidth > 840) {
