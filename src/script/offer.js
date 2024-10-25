@@ -4,12 +4,12 @@ let selectedOfferIndex = null;
 let isSelectedIndexSet = false;
 document.addEventListener("DOMContentLoaded", async () => {
   const completedStage = localStorage.getItem("completedStage");
-  console.log(completedStage);
+  console.log(completedStage, typeof completedStage);
+  if (completedStage === null) {
+    window.location.href = "http://127.0.0.1:5501/src/signup/";
+  }
   if (completedStage !== null) {
-    if (completedStage === "1") {
-      window.location.href = "http://127.0.0.1:5501/src/signup/form.html";
-    }
-    if (completedStage === "3") {
+    if (completedStage === "2" || completedStage === "3") {
       window.location.href =
         "http://127.0.0.1:5501/src/signup/paymentpicker.html";
     }
@@ -988,7 +988,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         `${storedOffers[selectedOfferIndex].monthlyBillingAmount}`
       );
       localStorage.setItem("completedStage", "3");
-      window.location.href = "http://localhost:5501/src/signup/card.html";
+      window.location.href =
+        "http://localhost:5501/src/signup/paymentpicker.html";
     }
     if (selectedOfferIndex === null && storedOffers.length > 0) {
       document.querySelector(".warningArea").innerHTML = "";

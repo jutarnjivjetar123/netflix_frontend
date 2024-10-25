@@ -134,6 +134,7 @@ main {
   width: 30%;
   display: flex;
   flex-direction: column;
+  row-gap: 32px;
 }
 .optionContainer {
   width: 100%;
@@ -160,12 +161,13 @@ main {
 }
 
 .paymentMethodNameAndLogos {
-  width: auto;
+  width: 100%;
   display: flex;
   flex-direction: row;
   padding: 15px 0;
   height: auto;
   align-items: center;
+  justify-content: space-between;
 }
 
 .selectionLabel {

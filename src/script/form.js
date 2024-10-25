@@ -6,8 +6,9 @@ const apiUrl = "http://127.0.0.1:3000";
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Completed stage: " + localStorage.getItem("completedStage"));
   const completedStage = localStorage.getItem("completedStage");
+  console.log(completedStage, "Completed stage type: " + typeof completedStage);
   if (completedStage !== null) {
-    if (completedStage === "2") {
+    if (completedStage === "1" || completedStage === "2") {
       window.location.href = "http://127.0.0.1:5501/src/signup/offer.html";
     }
     if (completedStage === "3") {
@@ -232,7 +233,7 @@ async function registerUsingEmail() {
       console.log("User Account was registered");
       localStorage.setItem("loginCredentials", emailValue);
       localStorage.setItem("publicId", responseData.publicId);
-      localStorage.setItem("completedStage", 1);
+      localStorage.setItem("completedStage", "1");
       window.location.href = responseData.redirectLink;
     }
   } catch (error) {
